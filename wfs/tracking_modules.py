@@ -725,6 +725,11 @@ hltPhase2VertexMerger = cms.EDProducer("VertexMerger",
 
 hltPhase2OfflinePrimaryVertices = cms.EDProducer("RecoChargedRefCandidatePrimaryVertexSorter",
     assignment = cms.PSet(
+        DzCutForChargedFromPUVtxs = cms.double(0.2),
+        EtaMinUseDz = cms.double(-1),
+        NumOfPUVtxsForCharged = cms.uint32(0),
+        OnlyUseFirstDz = cms.bool(False),
+        PtMaxCharged = cms.double(-1),
         maxDistanceToJetAxis = cms.double(0.07),
         maxDtSigForPrimaryAssignment = cms.double(4.0),
         maxDxyForJetAxisAssigment = cms.double(0.1),
@@ -737,7 +742,8 @@ hltPhase2OfflinePrimaryVertices = cms.EDProducer("RecoChargedRefCandidatePrimary
         maxJetDeltaR = cms.double(0.5),
         minJetPt = cms.double(25),
         preferHighRanked = cms.bool(False),
-        useTiming = cms.bool(False)
+        useTiming = cms.bool(False),
+        useVertexFit = cms.bool(True)
     ),
     jets = cms.InputTag("hltPhase2Ak4CaloJetsForTrk"),
     particles = cms.InputTag("hltPhase2TrackRefsForJetsBeforeSorting"),
@@ -757,6 +763,11 @@ hltPhase2OfflinePrimaryVertices = cms.EDProducer("RecoChargedRefCandidatePrimary
 
 hltPhase2L1PrimaryVertex = cms.EDProducer("RecoChargedRefCandidatePrimaryVertexSorter",
     assignment = cms.PSet(
+        DzCutForChargedFromPUVtxs = cms.double(0.2),
+        EtaMinUseDz = cms.double(-1),
+        NumOfPUVtxsForCharged = cms.int32(0),
+        OnlyUseFirstDz = cms.bool(False),
+        PtMaxCharged = cms.double(-1),
         maxDistanceToJetAxis = cms.double(0.07),
         maxDtSigForPrimaryAssignment = cms.double(4.0),
         maxDxyForJetAxisAssigment = cms.double(0.1),
@@ -769,7 +780,8 @@ hltPhase2L1PrimaryVertex = cms.EDProducer("RecoChargedRefCandidatePrimaryVertexS
         maxJetDeltaR = cms.double(0.5),
         minJetPt = cms.double(25),
         preferHighRanked = cms.bool(False),
-        useTiming = cms.bool(False)
+        useTiming = cms.bool(False),
+        useVertexFit = cms.bool(True)
     ),
     jets = cms.InputTag("hltPhase2Ak4CaloJetsForTrkL1"),
     particles = cms.InputTag("hltPhase2TrackRefsForJetsBeforeSortingL1"),
@@ -788,6 +800,11 @@ hltPhase2L1PrimaryVertex = cms.EDProducer("RecoChargedRefCandidatePrimaryVertexS
 )
 hltPhase2OfflinePrimaryVerticesWithBS = cms.EDProducer("RecoChargedRefCandidatePrimaryVertexSorter",
     assignment = cms.PSet(
+        DzCutForChargedFromPUVtxs = cms.double(0.2),
+        EtaMinUseDz = cms.double(-1),
+        NumOfPUVtxsForCharged = cms.uint32(0),
+        OnlyUseFirstDz = cms.bool(False),
+        PtMaxCharged = cms.double(-1),
         maxDistanceToJetAxis = cms.double(0.07),
         maxDtSigForPrimaryAssignment = cms.double(4.0),
         maxDxyForJetAxisAssigment = cms.double(0.1),
@@ -800,7 +817,8 @@ hltPhase2OfflinePrimaryVerticesWithBS = cms.EDProducer("RecoChargedRefCandidateP
         maxJetDeltaR = cms.double(0.5),
         minJetPt = cms.double(25),
         preferHighRanked = cms.bool(False),
-        useTiming = cms.bool(False)
+        useTiming = cms.bool(False),
+        useVertexFit = cms.bool(True)
     ),
     jets = cms.InputTag("hltPhase2Ak4CaloJetsForTrk"),
     particles = cms.InputTag("hltPhase2TrackRefsForJetsBeforeSorting"),
@@ -1590,7 +1608,7 @@ hltPhase2HighPtTripletStepTrajectoryCleanerBySharedHits = cms.ESProducer("Trajec
 
 hltPhase2HighPtTripletStepTrajectoryBuilder = cms.PSet(
     ComponentType = cms.string('GroupedCkfTrajectoryBuilder'), #needs to stay like this for now
-    MeasurementTrackerName = cms.string(''), #??
+    #MeasurementTrackerName = cms.string(''), #??
     TTRHBuilder = cms.string('WithTrackAngle'),
     alwaysUseInvalidHits = cms.bool(False), # previous True
     bestHitOnly = cms.bool(True),
@@ -1614,10 +1632,10 @@ hltPhase2HighPtTripletStepTrajectoryBuilder = cms.PSet(
     trajectoryFilter = cms.PSet(
         refToPSet_ = cms.string('hltPhase2HighPtTripletStepTrajectoryFilter')
     ),
-    seedPairPenalty = cms.int32(0),
-    minPt = cms.double(0.9),
-    maxLostHitsFraction = cms.double(999.0), # previous 0.1
-    maxNumberOfHits = cms.int32(100),
+    #seedPairPenalty = cms.int32(0),
+    #minPt = cms.double(0.9),
+    #maxLostHitsFraction = cms.double(999.0), # previous 0.1
+    #maxNumberOfHits = cms.int32(100),
     updator = cms.string('KFUpdator'),
     useSameTrajFilter = cms.bool(False)
 )
@@ -1630,8 +1648,8 @@ hltPhase2HighPtTripletStepTrackCandidates = cms.EDProducer("CkfTrackCandidateMak
     ### then numHitsForSeedCleaner = cms.int32(4) and onlyPixelHitsForSeedCleaner = cms.bool(False) by default
     ### unless they are changed explicitly
     RedundantSeedCleaner = cms.string('CachingSeedCleanerBySharedInput'),
-    SimpleMagneticField = cms.string('ParabolicMf'), # previous ''
-    TrajectoryBuilder = cms.string('GroupedCkfTrajectoryBuilder'), #needs to stay this way
+    #SimpleMagneticField = cms.string('ParabolicMf'), # previous ''
+    #sTrajectoryBuilder = cms.string('GroupedCkfTrajectoryBuilder'), #needs to stay this way
     TrajectoryBuilderPSet = cms.PSet(
         refToPSet_ = cms.string('hltPhase2HighPtTripletStepTrajectoryBuilder')
     ),
@@ -1857,7 +1875,7 @@ hltPhase2InitialStepChi2Est = cms.ESProducer("Chi2ChargeMeasurementEstimatorESPr
 
 hltPhase2InitialStepTrajectoryBuilder = cms.PSet(
     ComponentType = cms.string('GroupedCkfTrajectoryBuilder'),# previous GroupedCkfTrajectoryBuilder --> CkfTrajectoryBuilder
-    MeasurementTrackerName = cms.string(''),
+    #MeasurementTrackerName = cms.string(''),
     TTRHBuilder = cms.string('WithTrackAngle'),
     alwaysUseInvalidHits = cms.bool(False), # previous True
     bestHitOnly = cms.bool(True),
@@ -1881,10 +1899,10 @@ hltPhase2InitialStepTrajectoryBuilder = cms.PSet(
     trajectoryFilter = cms.PSet(
         refToPSet_ = cms.string('hltPhase2InitialStepTrajectoryFilter')
     ),
-    seedPairPenalty = cms.int32(0),
-    minPt = cms.double(0.9),
-    maxLostHitsFraction = cms.double(999.0), # previous 0.1
-    maxNumberOfHits = cms.int32(100),
+    #seedPairPenalty = cms.int32(0),
+    #minPt = cms.double(0.9),
+    #maxLostHitsFraction = cms.double(999.0), # previous 0.1
+    #maxNumberOfHits = cms.int32(100),
     updator = cms.string('KFUpdator'),
     useSameTrajFilter = cms.bool(True)
 )
@@ -1921,8 +1939,8 @@ hltPhase2InitialStepTrackCandidates = cms.EDProducer("CkfTrackCandidateMaker",
     ### then numHitsForSeedCleaner = cms.int32(4) and onlyPixelHitsForSeedCleaner = cms.bool(False) by default
     ### unless they are changed explicitly
     RedundantSeedCleaner = cms.string('CachingSeedCleanerBySharedInput'),
-    SimpleMagneticField = cms.string('ParabolicMf'), # previous ''
-    TrajectoryBuilder = cms.string('GroupedCkfTrajectoryBuilder'), # previous GroupedCkfTrajectoryBuilder --> ''
+    #SimpleMagneticField = cms.string('ParabolicMf'), # previous ''
+    #TrajectoryBuilder = cms.string('GroupedCkfTrajectoryBuilder'), # previous GroupedCkfTrajectoryBuilder --> ''
     TrajectoryBuilderPSet = cms.PSet(
         refToPSet_ = cms.string('hltPhase2InitialStepTrajectoryBuilder')
     ),

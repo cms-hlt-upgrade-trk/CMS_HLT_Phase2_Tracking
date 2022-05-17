@@ -16,22 +16,7 @@ then to run the various tracking sequence import the customization functions
 
 ```from customize_steps import *```
 
-### Patatrack configurations
-
-If you want to run a configuration including Patatrack pixel tracks (see [the wiki](https://patatrack.web.cern.ch/patatrack/wiki/)), you would need to set up your release to be 11_1_3_Patatrack adding on top of that what is needed to run with Phase2 tracker.
-
-```
-cmsrel CMSSW_11_1_3_Patatrack
-cd CMSSW_11_1_3_Patatrack/src/
-cmsenv
-git cms-init -x cms-patatrack
-git branch CMSSW_11_1_X_Patatrack --track cms-patatrack/CMSSW_11_1_X_Patatrack
-
-git cms-merge-topic AdrianoDee:patatrack_hlt_phase2
-
-scram b -j 8
-```
-
+This is working in CMSSW_12_3_0
 
 ## Tracking configurations
 
