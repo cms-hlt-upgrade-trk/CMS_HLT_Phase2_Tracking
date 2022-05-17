@@ -1,10 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+
 from __future__ import print_function
-from root_numpy import array2hist, hist2array
-import numpy as np
-
-
-from builtins import *
+from builtins import range
 import copy
 import math
 import array
@@ -32,8 +29,6 @@ def makeColor(hexstr):
     return _colorindex
 
 iter_colors = dict(
-    L1 = makeColor("fdddc2"),
-    L1Step = makeColor("fdddc2"),
     InitialStep         = makeColor("cde7ff"),
     HighPtTripletStep   = makeColor("b2d3f3"),
     LowPtQuadStep       = makeColor("97c0e8"),
@@ -184,21 +179,8 @@ class PlotStack:
         self._histos = []
         self._legends = []
 
-#    def add(self, histo, legend):
-#        self._histos.append(histo)
-#        self._legends.append(legend)
-    def add(self, tmphisto, legend):
-#        print("adding",histo)
-        arr = hist2array(tmphisto)
-        nbins = tmphisto.GetNbinsX()
-        xmin = tmphisto.GetXaxis().GetXmin()
-        xmax = tmphisto.GetXaxis().GetXmax()
-        name  = tmphisto.GetName()
-        title = tmphisto.GetTitle()
-        histo = ROOT.TH1F(name,title,nbins,xmin,xmax)
-        array2hist(arr,histo)
-        print(tmphisto.GetFillColor())
-        histo.SetFillColor(tmphisto.GetFillColor())
+    def add(self, histo, legend):
+        histo.ResetBit(ROOT.TH1.kIsAverage)
         self._histos.append(histo)
         self._legends.append(legend)
 
@@ -753,10 +735,21 @@ def plotEffAndFake(files, prefix, pileup, hasPU70=False, hasCA=False):
 def plotColoredEff(phase1file, prefix, pileup):
     #folder_track = "DQMData/Run 1/Tracking/Run summary/Track/cutsReco%s_trackingParticleRecoAsssociation/"
     #folder_track = "DQMData/Run 1/Tracking/Run summary/Track/cutsReco%sHp_trackingParticleRecoAsssociation/"
-    folder_track = "DQMData/Run 1/Tracking/Run summary/Track/hltPhase2CutsReco%sByOriginalAlgoHp_trackingParticleRecoAsssociation/"
+    folder_track = "DQMData/Run 1/Tracking/Run summary/Track/cutsReco%sByOriginalAlgoHp_trackingParticleRecoAsssociation/"
     iterations = [
         "InitialStep",
-        "L1Step",
+        "HighPtTripletStep",
+        "LowPtQuadStep",
+        "LowPtTripletStep",
+        "DetachedQuadStep",
+        "DetachedTripletStep",
+        "MixedTripletStep",
+        "PixelPairStep",
+        "PixelLessStep",
+        "TobTecStep",
+        "JetCoreRegionalStep",
+        "MuonSeededStepInOut",
+        "MuonSeededStepOutIn",
     ]
     legendLabels = [x.replace("Step", "").replace("Regional", "").replace("SeededInOut", " inside-out").replace("SeededOutIn", " outside-in") for x in iterations]
     legendLabels[1:] = ["+"+x for x in legendLabels[1:]]
