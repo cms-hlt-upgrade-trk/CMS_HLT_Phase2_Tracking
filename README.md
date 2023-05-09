@@ -28,10 +28,10 @@ cmsDriver.py Phase2 -s HLT:75e33 \
      --geometry Extended2026D95 \
      --era Phase2C17I13M9 \
      --eventcontent FEVTDEBUGHLT \
-     --filein=/store/relval/CMSSW_13_0_0_pre4/RelValTTbar_14TeV/GEN-SIM-RECO/PU_130X_mcRun4_realistic_v2_2026D95PU200-v2/00000/00d45085-5103-411b-82ea-19d4b11bfd67.root 
+     --filein=/store/relval/CMSSW_13_0_0_pre4/RelValTTbar_14TeV/GEN-SIM-RECO/PU_130X_mcRun4_realistic_v2_2026D95PU200-v2/00000/00d45085-5103-411b-82ea-19d4b11bfd67.root
      -n 10 \
      --nThreads 10 \
-     --customise HLTrigger/Configuration/customizePhase2HLTTracking.customisePhase2HLTForTrackingOnly, HLTrigger/Configuration/customizePhase2HLTTracking.addTrackingValidation
+     --customise HLTrigger/Configuration/customizePhase2HLTTracking.customisePhase2HLTForTrackingOnly,HLTrigger/Configuration/customizePhase2HLTTracking.addTrackingValidation
 ```
 Note that:
 - if you want to run the whole menu skip the `customisePhase2HLTForTrackingOnly` customizer;
@@ -70,6 +70,6 @@ cmsDriver.py Phase2_Patatrack -s HLT:75e33 \
      --filein=/store/relval/CMSSW_13_0_0_pre4/RelValTTbar_14TeV/GEN-SIM-RECO/PU_130X_mcRun4_realistic_v2_2026D95PU200-v2/00000/00d45085-5103-411b-82ea-19d4b11bfd67.root 
      -n 10 \
      --nThreads 10 \
-     --customise HLTrigger/Configuration/customizePhase2HLTTracking.customisePhase2HLTForTrackingOnly, HLTrigger/Configuration/customizePhase2HLTTracking.customisePhase2HLTForPatatrack, HLTrigger/Configuration/customizePhase2HLTTracking.addTrackingValidation
+     --customise HLTrigger/Configuration/customizePhase2HLTTracking.customisePhase2HLTForTrackingOnly, HLTrigger/Configuration/customizePhase2HLTTracking.customisePhase2HLTForPatatrack,HLTrigger/Configuration/customizePhase2HLTTracking.addTrackingValidation
 ```
 
