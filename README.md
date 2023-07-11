@@ -28,7 +28,7 @@ cmsDriver.py Phase2 -s HLT:75e33 \
      --geometry Extended2026D95 \
      --era Phase2C17I13M9 \
      --eventcontent FEVTDEBUGHLT \
-     --filein=/store/relval/CMSSW_13_0_0_pre4/RelValTTbar_14TeV/GEN-SIM-RECO/PU_130X_mcRun4_realistic_v2_2026D95PU200-v2/00000/00d45085-5103-411b-82ea-19d4b11bfd67.root 
+     --filein=/store/relval/CMSSW_13_1_0_pre1/RelValTTbar_14TeV/GEN-SIM-DIGI-RAW/PU_130X_mcRun4_realistic_v2_2026D95PU200-v2/00000/0413e17a-a6a1-422b-8da5-f237dfe5ac3b.root \
      -n 10 \
      --nThreads 10 \
      --customise HLTrigger/Configuration/customizePhase2HLTTracking.customisePhase2HLTForTrackingOnly, HLTrigger/Configuration/customizePhase2HLTTracking.addTrackingValidation
