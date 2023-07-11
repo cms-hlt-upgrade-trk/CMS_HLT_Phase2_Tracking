@@ -7,14 +7,14 @@ The old configs and workflows used for the Upgrade DAQ and HLT TDR in 2022 are u
 To setup your cmssw to have the ingredients to run the upgrade hlt tracking configs start with
 
 ```
-scram p -n cmssw CMSSW_13_0_0
+scram p -n cmssw CMSSW_13_2_0_pre2
 cd cmssw/src
 cmsenv
-git cms-merge-topic cms-hlt-upgrade-trk:phase2_hlt_tracking
+git cms-merge-topic cms-hlt-upgrade-trk:phase2_hlt_tracking_132
 scram b -j 4
 ```
 
-At the moment this has been tested with `13_0_0` and `13_1_0_pre4`
+At the moment this has been tested with `13_2_0_pre2`
 
 -----
 ### Baseline Tracking Configuration
