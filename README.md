@@ -14,17 +14,23 @@ git cms-merge-topic cms-hlt-upgrade-trk:phase2_hlt_tracking_132
 scram b -j 4
 ```
 
-Apply the following changes to HLTrigger/Configuration/python/customizePhase2HLTTracking.py
-[Needed to run the customization to include Patatrack pixel tracks, these changes should be soon included in cms-hlt-upgrade-trk:phase2_hlt_tracking_132]
+Apply the following changes to `HLTrigger/Configuration/python/customizePhase2HLTTracking.py`
 
+This is needed to run the customization to include Patatrack pixel tracks, these changes should be soon included in `cms-hlt-upgrade-trk:phase2_hlt_tracking_132`
+
+_line 179_
 ```
 -    from RecoPixelVertexing.PixelTriplets.caHitNtupletCUDAPhase2_cfi import caHitNtupletCUDAPhase2 as _pixelTracksCUDAPhase2
 +    from RecoTracker.PixelSeeding.caHitNtupletCUDAPhase2_cfi import caHitNtupletCUDAPhase2 as _pixelTracksCUDAPhase2
 ```
+
+_line 188_
 ```
 -    from RecoPixelVertexing.PixelTrackFitting.pixelTrackSoAFromCUDAPhase2_cfi import pixelTrackSoAFromCUDAPhase2 as _pixelTracksSoAPhase2
 +    from RecoTracker.PixelTrackFitting.pixelTrackSoAFromCUDAPhase2_cfi import pixelTrackSoAFromCUDAPhase2 as _pixelTracksSoAPhase2
 ```
+
+_line 201_
 ```
 -    from RecoPixelVertexing.PixelTrackFitting.pixelTrackProducerFromSoAPhase2_cfi import pixelTrackProducerFromSoAPhase2 as _pixelTrackProducerFromSoAPhase2
 +    from RecoTracker.PixelTrackFitting.pixelTrackProducerFromSoAPhase2_cfi import pixelTrackProducerFromSoAPhase2 as _pixelTrackProducerFromSoAPhase2
