@@ -89,7 +89,7 @@ cmsDriver.py Phase2_Patatrack -s HLT:75e33 \
      --geometry Extended2026D95 \
      --era Phase2C17I13M9 \
      --eventcontent FEVTDEBUGHLT \
-     --filein=/store/mc/Phase2Spring23DIGIRECOMiniAOD/TT_TuneCP5_14TeV-powheg-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_131X_mcRun4_realistic_v5-v1/30000/01607282-0427-4687-a122-ef0a41220590.root \ 
+     --filein=/store/mc/Phase2Spring23DIGIRECOMiniAOD/TT_TuneCP5_14TeV-powheg-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_131X_mcRun4_realistic_v5-v1/30000/01607282-0427-4687-a122-ef0a41220590.root \
      -n 10 \
      --nThreads 10 \
      --customise HLTrigger/Configuration/customizePhase2HLTTracking.customisePhase2HLTForTrackingOnly,HLTrigger/Configuration/customizePhase2HLTTracking.customisePhase2HLTForPatatrack,HLTrigger/Configuration/customizePhase2HLTTracking.addTrackingValidation
